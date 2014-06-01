@@ -40,7 +40,9 @@ class CubeDemo
         @cubeTexture = THREE.ImageUtils.loadTexture 'js.png', {}, done
 
     rotate: (direction) ->
-        [x, y, z] = CubeDemo.rotvecs[direction]
+        vector = CubeDemo.rotvecs[direction]
+        return if not vector
+        [x, y, z] = vector
         clearInterval @animInterval
         frameCount = 0
         @animInterval = setInterval (=>
